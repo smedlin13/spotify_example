@@ -1,6 +1,6 @@
 class BillboardsController < ApplicationController
   def index
-    @billboards = Billboards.all 
+    @billboards = Billboard.all 
     render component: 'Billboards', props: { billboards: @billboards }
   end
 
@@ -41,11 +41,14 @@ class BillboardsController < ApplicationController
     @billboard = Billboard.find(params[:id])
     @billboard.destroy
     redirect_to billboards_path
-
+  end
+  
   private
+
   def billboard_params
     params.require(:billboard).permit(:name)
   end
 
 
 end
+
